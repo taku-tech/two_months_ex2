@@ -1,14 +1,11 @@
 <%= form_for(book, url: books_path) do |f| %>
-	<% if @user.errors.any? %>
+	<% if book.errors.any? %>
 		<h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
 		<ul>
-			<% @user.errors.full_messages.each do |message| %>
+			<% book.errors.full_messages.each do |message| %>
 			<li><%= message %></li>
 			<% end %>
 		</ul>
-	<% end %>
-	    </ul>
-	  </div>
 	<% end %>
 	<div class="field row">
 		<%= f.label :title %>

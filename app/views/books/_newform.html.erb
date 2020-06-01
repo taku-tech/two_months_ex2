@@ -1,10 +1,12 @@
 <%= form_for(book, url: books_path) do |f| %>
-	<% if book.errors.any? %>
-	  <div id="error_explanation" class="alert alert-danger">
-	    <ul>
-	      <% book.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
+	<% if @user.errors.any? %>
+		<h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
 	    </ul>
 	  </div>
 	<% end %>

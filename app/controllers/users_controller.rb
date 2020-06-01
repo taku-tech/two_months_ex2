@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   	if @user.update(user_params)
   		redirect_to users_path(@user), notice: "successfully updated user!"
   	else
-  		render "show"
+  		render "edit"
   	end
   end
 

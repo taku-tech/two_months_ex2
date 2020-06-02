@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'home/about' => 'home#about'
   resources :users,only: [:show,:index,:edit,:update]
-  resources :books,except: [:new]
+  resources :books,except: [:new] do
+  	resource :favorite,only: [:create,:destroy]
+  end
 end

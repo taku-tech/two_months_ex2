@@ -16,11 +16,4 @@ class FavoritesController < ApplicationController
         	redirect_back(fallback_location: user_path(current_user))
         end
 	end
-
-	private
-
-	def params_favorite
-		params.permit(:book_id)
-	end
-
 end

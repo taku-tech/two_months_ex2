@@ -1,7 +1,7 @@
-<% if book.errors.any? %>
-	<h3><%= book.errors.count %>error occurrence</h3><!--エラーメッセ-->
+<% if error.errors.any? %>
+	<h3><%= error.errors.count %>error occurrence</h3><!--エラーメッセ-->
 	<ul>
-		<% book.errors.full_messages.each do |message| %>
+		<% error.errors.full_messages.each do |message| %>
 		<li><%= message %></li>
 		<% end %>
 	</ul>

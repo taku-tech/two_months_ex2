@@ -10,6 +10,14 @@
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+		<tr>
+			<th>follows</th>
+			<th><%= link_to user.followings.count, follows_user_path(user) %></th>
+		</tr>
+		<tr>
+			<th>followers</th>
+			<th><%= link_to user.followers.count, followers_user_path(user) %></th>
+		</tr>
 </table>
 
 <% if current_user.id == user.id %>
@@ -23,7 +31,7 @@
 		</div>
 	<% else %>
 		<div class="row">
-			<%= link_to "フォローする", user_relationships_path(user), method: :post, class: "col-xs-10 col-xs-offset-1 btn btn-secondary" %>
+			<%= link_to "フォローする", user_relationships_path(user), method: :post, class: "col-xs-10 col-xs-offset-1 btn btn-success" %>
 		</div>
 	<% end %>
 <% end %>

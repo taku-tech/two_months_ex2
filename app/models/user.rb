@@ -11,11 +11,11 @@ class User < ApplicationRecord
 
   # フォローする側から見たrelationship
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
-  has_many :following, through: :acitive_relationships, source: :follower
+  has_many :followings, through: :active_relationships, source: :follower
 
   # フォローされる側から見たrelationship
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
-  has_many :follower, through: :passive_relationships, source: :following
+  has_many :followers, through: :passive_relationships, source: :following
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, length: {maximum: 20, minimum: 2}

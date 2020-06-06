@@ -1,0 +1,14 @@
+<%= form_with model: [book,book_comment] do |f| %>
+
+	<div class="field">
+		<%= @book.title %>
+	</div>
+
+	<div class="field">
+		<%= f.text_area :comment, class: "col-xs-12 book_comment_body" %>
+	</div>
+
+	<div class="actions row">
+		<%= f.submit "送信", class: "btn btn-outline-secondary col-xs-1 col-xs-offset-11" %>
+	</div>
+<% end %>

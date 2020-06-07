@@ -36,9 +36,13 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
+  def zipedit
+    params.require(:user).permit()
+  end
+
   private
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image)
+  	params.require(:user).permit(:name, :introduction, :profile_image, :postcode, :prefecture_name, :address_city, :address_street, :address_building)
   end
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。

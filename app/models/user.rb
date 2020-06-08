@@ -1,6 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,:validatable
 
@@ -26,6 +37,9 @@ class User < ApplicationRecord
   validates :address_street, presence: true
   validates :address_building, presence: true
 
+  # geocoded_by :address
+  # after_validation :geocode, if: :address_changed?
+
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
@@ -42,17 +56,6 @@ class User < ApplicationRecord
     else
       @users = User.all
     end
-  end
-
-  include JpPrefecture
-  jp_prefecture :prefecture_code
-
-  def prefecture_name
-    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-  end
-
-  def prefecture_name=(prefecture_name)
-    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
 end

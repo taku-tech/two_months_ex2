@@ -77,3 +77,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 
 gem 'jp_prefecture'
+#環境変数に変換
+gem 'dotenv-rails'
+

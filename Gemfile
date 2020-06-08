@@ -55,7 +55,7 @@ group :test do
   # gem 'selenium-webdriver'
   # gem 'chromedriver-helper'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  
+
   # 下の６つのgemを追加する
   gem 'rspec-rails'
   gem "factory_bot_rails"
@@ -79,4 +79,5 @@ gem 'jquery-rails'
 gem 'jp_prefecture'
 #環境変数に変換
 gem 'dotenv-rails'
-
+#住所から緯度・経度を割り当てる
+gem "geocoder"

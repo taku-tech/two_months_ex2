@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   	resource :favorites,only: [:create,:destroy]
   end
   get 'search' => 'searches#search', as: :search
+
+  resources :chats, only: [:create,:show]
+  resources :rooms, only: [:create]
 end

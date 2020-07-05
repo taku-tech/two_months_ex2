@@ -6,6 +6,23 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@books = @user.books
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
+    @current_user_rooms = UserRoom.where(user_id: current_user.id)
+    @user_rooms = UserRoom.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @current_user_rooms.each do |current_user_room|
+        @user_rooms.each do |user_room|
+          if current_user_room.room_id == user_room.room_id then
+            @isRoom = true
+            @roomId = current_user_room.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @user_room = UserRoom.new
+      end
+    end
   end
 
   def index

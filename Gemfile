@@ -79,5 +79,8 @@ gem 'jquery-rails'
 gem 'jp_prefecture'
 #環境変数に変換
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 #住所から緯度・経度を割り当てる
 gem "geocoder"
